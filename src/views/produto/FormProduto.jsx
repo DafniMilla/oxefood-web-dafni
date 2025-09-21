@@ -1,8 +1,40 @@
 import InputMask from 'comigo-tech-react-input-mask';
-import React from "react";
+import React, { useState } from "react";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
+import axios from "axios";
 
 export default function FormProduto() {
+
+    function salvar() {
+
+		let produtoRequest = {
+
+		     titulo: Titulo,
+             codigo: codigo,
+             descricao: descricao,
+             valorUnitario: valorUnitario,
+             tempoEntregaMinimo: tempoEntregaMinimo,
+             tempoEntregaMaximo: tempoEntregaMaximo
+
+		}
+	
+		axios.post("http://localhost:8080/api/produto", produtoRequest)
+		.then((response) => {
+		     console.log('Cliente cadastrado com sucesso.')
+		})
+		.catch((error) => {
+		     console.log('Erro ao incluir o um cliente.')
+		})
+	}
+
+      const [Titulo, setTitulo] = useState();
+      const [codigo, setCodigo] =useState();
+      const [descricao,  setDescricao] = useState();
+      const [valorUnitario, setvalorUnitario]=useState();
+      const [tempoEntregaMinimo, setTempoEntregaminimo]=useState();
+      const [tempoEntregaMaximo, setTempoEntregaMaximo]=useState();
+
+
 
     return (
 
@@ -43,14 +75,14 @@ export default function FormProduto() {
                             
                             <Form.Group>
 
-                                <Form.Input
+                                <Form.TextArea
                                     fluid
                                     label='Descrição'
-                                    width={10}>
+                                    width={16}>
                                     <InputMask 
                                         mask="(99) 9999.9999"
                                     /> 
-                                </Form.Input>
+                                </Form.TextArea>
                             </Form.Group>
 
                                 <Form.Group>
@@ -104,6 +136,7 @@ export default function FormProduto() {
                                 labelPosition='left'
                                 color='blue'
                                 floated='right'
+                                onClick={() => salvar()}
                             >
                                 <Icon name='save' />
                                 Salvar
