@@ -2,6 +2,7 @@ import axios from "axios";
 import InputMask from 'comigo-tech-react-input-mask';
 import { useState } from "react";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
+import MenuSistema from '../../MenuSistema/MenuSistema';
 
 export default function FormCliente() {
   function salvar() {
@@ -33,8 +34,12 @@ export default function FormCliente() {
     const [foneFixo, setFoneFixo] = useState();
 
     return (
+        
 
         <div>
+             <MenuSistema tela={'cliente'} />
+
+
 
             <div style={{ marginTop: '3%' }}>
 
