@@ -19,7 +19,7 @@ export default function MenuSistema (props) {
                    as={Link}
                    to='/form-cliente'
                />
-  <Menu.Item
+   <Menu.Item
                    content='Produto'
                    active={props.tela === 'produto'}
                    as={Link}

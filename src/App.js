@@ -1,10 +1,7 @@
 import './App.css';
-import FormCliente from './views/cliente/FormCliente';
 
 import { Segment } from 'semantic-ui-react';
 import Rotas from "./Rotas";
-import FormEntregador from './views/entregador/FormEntregador';
-import FormProduto from './views/produto/FormProduto';
 
 
 function App() {
@@ -13,9 +10,6 @@ function App() {
       
    
       <Rotas/>
-      <FormCliente />
-      <FormProduto/>
-      <FormEntregador/>
       
       
 

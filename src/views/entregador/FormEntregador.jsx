@@ -1,7 +1,8 @@
-import InputMask from 'comigo-tech-react-input-mask';
-import { Button, Container, Divider, Form, FormGroup, FormInput, Icon } from 'semantic-ui-react';
-import { useState } from "react";
 import axios from "axios";
+import InputMask from 'comigo-tech-react-input-mask';
+import { useState } from "react";
+import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
+import MenuSistema from '../../MenuSistema';
 
 export default function FormEntregador() {
 
@@ -26,13 +27,13 @@ export default function FormEntregador() {
              ativo: ativo
 
 		}
-	
+	console.log(Rg)
 		axios.post("http://localhost:8080/api/entregador", entregadorRequest)
 		.then((response) => {
-		     console.log('Cliente cadastrado com sucesso.')
+		     console.log('Entregador cadastrado com sucesso.')
 		})
 		.catch((error) => {
-		     console.log('Erro ao incluir o um cliente.')
+		     console.log('Erro ao incluir o um entregador.')
 		})
 	}
 
@@ -59,6 +60,7 @@ export default function FormEntregador() {
     return (
 
         <div>
+               <MenuSistema tela={'entregador'} />
 
             <div style={{ marginTop: '3%' }}>
 
@@ -89,7 +91,6 @@ export default function FormEntregador() {
                                     label='CPF'>
                                     <InputMask
                                         required
-                                        mask="999.999.999-99"
                                         value={cpf}
                                         onChange={e => setCpf(e.target.value)}
                                     />
@@ -100,9 +101,8 @@ export default function FormEntregador() {
                                     label='Rg'
                                     width={10}>
                                     <InputMask
-                                        mask="(99) 9999.9999"
                                         value={Rg}
-                                        onChange={e => setCpf(e.target.value)} />
+                                        onChange={e => setRg(e.target.value)} />
 
                                 </Form.Input>
                             </Form.Group>

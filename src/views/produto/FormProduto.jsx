@@ -2,6 +2,7 @@ import axios from "axios";
 import InputMask from 'comigo-tech-react-input-mask';
 import { useState } from "react";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
+import MenuSistema from '../../MenuSistema';
 
 export default function FormProduto() {
 
@@ -20,10 +21,10 @@ export default function FormProduto() {
 	
 		axios.post("http://localhost:8080/api/produto", produtoRequest)
 		.then((response) => {
-		     console.log('Cliente cadastrado com sucesso.')
+		     console.log('Produto cadastrado com sucesso.')
 		})
 		.catch((error) => {
-		     console.log('Erro ao incluir o um cliente.')
+		     console.log('Erro ao incluir o um produto.')
 		})
 	}
 
@@ -39,6 +40,8 @@ export default function FormProduto() {
     return (
 
         <div>
+            <MenuSistema tela={'produto'} />
+            
 
             <div style={{marginTop: '3%'}}>
 
@@ -59,6 +62,12 @@ export default function FormProduto() {
                                     fluid
                                     label='Título'
                                     maxLength="100"
+                                    value={Titulo}
+                                    onChange={e => setTitulo(e.target.value)}
+                                
+                    
+                                    
+                                    
                                 />
 
                                 <Form.Input
@@ -67,7 +76,8 @@ export default function FormProduto() {
                                     label='Código do produto'>
                                     <InputMask
                                         required
-                                        mask="999.999.999-99"
+                                        value={codigo}
+                                        onChange={e => setCodigo(e.target.value)}
                                     /> 
                                 </Form.Input>
 
@@ -80,7 +90,8 @@ export default function FormProduto() {
                                     label='Descrição'
                                     width={16}>
                                     <InputMask 
-                                        mask="(99) 9999.9999"
+                                        value={descricao}
+                                        onChange={e => setDescricao(e.target.value)}
                                     /> 
                                 </Form.TextArea>
                             </Form.Group>
@@ -92,7 +103,9 @@ export default function FormProduto() {
                                     label='Valor Unitário'
                                     width={6}>
                                     <InputMask 
-                                        mask="(99) 9999.9999"
+                                      
+                                        value={valorUnitario}
+                                        onChange={e => setvalorUnitario(e.target.value)}
                                     /> 
                                 </Form.Input>
 
@@ -100,6 +113,8 @@ export default function FormProduto() {
                                     fluid
                                     label='Tempo de Entrega Minimo em Minutos'
                                     width={6}
+                                     value={tempoEntregaMinimo}
+                                    onChange={e => setTempoEntregaminimo(e.target.value)}
                                 >
                                 </Form.Input>
 
@@ -107,6 +122,8 @@ export default function FormProduto() {
                                     fluid
                                     label='Tempo de Entrega Máximo em Minutos'
                                     width={6}
+                                    value={tempoEntregaMaximo}
+                                    onChange={e => setTempoEntregaMaximo(e.target.value)}
                                 >
                                 </Form.Input>
 
