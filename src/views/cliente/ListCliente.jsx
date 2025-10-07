@@ -54,7 +54,7 @@ export default function ListCliente() {
        setOpenModal(false)
    }
 
-
+//botao cadastrar endereço 1 ponto extra
     return (
         <div>
             <MenuSistema tela={'cliente'} />
@@ -148,9 +148,10 @@ export default function ListCliente() {
                     <Button color='green' inverted onClick={() => remover()}>
                         <Icon name='checkmark' /> Sim
                     </Button>
+
+                
                 </Modal.Actions>
             </Modal>
-
         </div>
     )
 }
