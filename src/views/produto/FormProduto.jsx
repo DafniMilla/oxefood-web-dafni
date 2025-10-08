@@ -9,7 +9,7 @@ import { useLocation} from 'react-router-dom';
 
 
 export default function FormProduto() {
-    const location = useLocation(); // ✅ dentro do componente
+    const location = useLocation(); 
     const state = location.state;
 
     const [idProduto, setIdProduto] = useState(state?.id || null);
