@@ -1,17 +1,23 @@
 import axios from "axios";
 import InputMask from 'comigo-tech-react-input-mask';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
+import { useLocation} from 'react-router-dom';
+
+
 
 export default function FormProduto() {
+    const location = useLocation(); // ✅ dentro do componente
+    const state = location.state;
 
-    const [Titulo, setTitulo] = useState();
+    const [idProduto, setIdProduto] = useState(state?.id || null);
+    const [titulo, setTitulo] = useState();
     const [codigo, setCodigo] = useState();
     const [descricao, setDescricao] = useState();
-    const [valorUnitario, setvalorUnitario] = useState();
-    const [tempoEntregaMinimo, setTempoEntregaminimo] = useState();
+    const [valorUnitario, setValorUnitario] = useState();
+    const [tempoEntregaMinimo, setTempoEntregaMinimo] = useState();
     const [tempoEntregaMaximo, setTempoEntregaMaximo] = useState();
     const [listaCategoria, setListaCategoria] = useState([]);
     const [idCategoria, setIdCategoria] = useState();
@@ -94,7 +100,7 @@ return (
                                 fluid
                                 label='Título'
                                 maxLength="100"
-                                value={Titulo}
+                                value={titulo}
                                 onChange={e => setTitulo(e.target.value)}
 
 
@@ -137,7 +143,7 @@ return (
                                 <InputMask
 
                                     value={valorUnitario}
-                                    onChange={e => setvalorUnitario(e.target.value)}
+                                    onChange={e => setValorUnitario(e.target.value)}
                                 />
                             </Form.Input>
 
@@ -146,7 +152,7 @@ return (
                                 label='Tempo de Entrega Minimo em Minutos'
                                 width={6}
                                 value={tempoEntregaMinimo}
-                                onChange={e => setTempoEntregaminimo(e.target.value)}
+                                onChange={e => setTempoEntregaMinimo(e.target.value)}
                             >
                             </Form.Input>
 
