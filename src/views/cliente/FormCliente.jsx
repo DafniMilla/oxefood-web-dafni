@@ -5,7 +5,17 @@ import { Link, useLocation } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
 import { notifyError, notifySuccess } from '../util/util';
+
 export default function FormCliente() {
+
+    const { state } = useLocation();
+    const [idCliente, setIdCliente] = useState();
+
+    const [nome, setNome] = useState();
+    const [cpf, setCpf] = useState();
+    const [dataNascimento, setDataNascimento] = useState();
+    const [foneCelular, setFoneCelular] = useState();
+    const [foneFixo, setFoneFixo] = useState();
 
     function formatarData(dataParam) {
 
@@ -17,9 +27,6 @@ export default function FormCliente() {
         return arrayData[2] + '/' + arrayData[1] + '/' + arrayData[0];
     }
 
-
-    const { state } = useLocation();
-    const [idCliente, setIdCliente] = useState();
 
     useEffect(() => {
         if (state != null && state.id != null) {
@@ -45,34 +52,30 @@ export default function FormCliente() {
             dataNascimento: dataNascimento,
             foneCelular: foneCelular,
             foneFixo: foneFixo
-        }
+        
+    };
 
-        if (idCliente != null) { //Alteração:
-            axios.put("http://localhost:8080/api/cliente/" + idCliente, clienteRequest)
-                .then((response) => 
-                    {notifySuccess('Cliente cadastrado com sucesso.')
- })
-                .catch((error) => { 
-                   if (error.response.data.errors != undefined) {
-       		for (let i = 0; i < error.response.data.errors.length; i++) {
-	       		notifyError(error.response.data.errors[i].defaultMessage)
-	    	}
-	} else {
-		notifyError(error.response.data.message)
-	}
-
-
-    })
-}
+    if (idCliente != null) { //Alteração:
+        axios.put("http://localhost:8080/api/cliente/" + idCliente, clienteRequest)
+            .then((response) => {
+                notifySuccess('Cliente cadastrado com sucesso.')
+            })
+            .catch((error) => {
+                if (error.response.data.errors != undefined) {
+                    for (let i = 0; i < error.response.data.errors.length; i++) {
+                        notifyError(error.response.data.errors[i].defaultMessage)
+                    }
+                } else {
+                    notifyError(error.response.data.message)
+                }
 
 
+            });
+    }}
 
 
-    const [nome, setNome] = useState();
-    const [cpf, setCpf] = useState();
-    const [dataNascimento, setDataNascimento] = useState();
-    const [foneCelular, setFoneCelular] = useState();
-    const [foneFixo, setFoneFixo] = useState();
+
+
 
     return (
 
@@ -206,5 +209,4 @@ export default function FormCliente() {
 
     );
 
-}
 }

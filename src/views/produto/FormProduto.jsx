@@ -1,11 +1,9 @@
 import axios from "axios";
 import InputMask from 'comigo-tech-react-input-mask';
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
-import { useLocation} from 'react-router-dom';
-
 
 
 export default function FormProduto() {
