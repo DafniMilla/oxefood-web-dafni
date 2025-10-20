@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Container, Divider, Header, Icon, Modal, Table } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
-import { notifyError, notifySuccess } from '../../views/util/util';
+import { notifyError, notifySuccess } from '../util/Util';
 
 
 export default function ListEntregador() {
