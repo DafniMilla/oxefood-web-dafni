@@ -1,9 +1,10 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
-import { notifyError } from '../../views/util/Util';
 import { registerSuccessfulLoginForJwt } from '../util/AuthenticationService';
+//import { notifyError } from '../util/Util';
+
 
 export default function FormLogin () {
 

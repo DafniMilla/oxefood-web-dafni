@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Menu, Form, Container, Segment, Divider, Header, Icon, Modal, Table } from 'semantic-ui-react';
+import { Button, Container, Divider, Form, Header, Icon, Image, Menu, Modal, Segment, Table } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
 
 
@@ -188,6 +188,7 @@ export default function ListProduto() {
                     <Table color='orange' sortable celled>
                         <Table.Header>
                             <Table.Row>
+
                                 <Table.HeaderCell>Código</Table.HeaderCell>
                                 <Table.HeaderCell>Categoria</Table.HeaderCell>
                                 <Table.HeaderCell>Título</Table.HeaderCell>
@@ -196,12 +197,14 @@ export default function ListProduto() {
                                 <Table.HeaderCell>Tempo Mínimo de Entrega</Table.HeaderCell>
                                 <Table.HeaderCell>Tempo Máximo de Entrega</Table.HeaderCell>
                                 <Table.HeaderCell textAlign='center'>Ações</Table.HeaderCell>
+                                
                             </Table.Row>
                         </Table.Header>
 
                         <Table.Body>
                             {lista.map(produto => (
                                 <Table.Row key={produto.id}>
+                                    <Table.Cell><Image src={`imagens_cadastradas/${produto.imagem}`} /></Table.Cell>
                                     <Table.Cell>{produto.codigo}</Table.Cell>
                                     <Table.Cell>{produto.categoria?.descricao}</Table.Cell>
                                     <Table.Cell>{produto.titulo}</Table.Cell>

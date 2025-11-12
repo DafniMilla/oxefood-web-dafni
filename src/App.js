@@ -1,13 +1,14 @@
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import './App.css';
-
+import { setupAxiosInterceptors } from './views/util/AuthenticationService';
 
 import { Segment } from 'semantic-ui-react';
 import Rotas from "./Rotas";
 
 
 function App() {
+  setupAxiosInterceptors
   return (
     <div className="App">
       
